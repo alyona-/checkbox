@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Чек</title>
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+
+        .result{
+            position: relative;
+            color:#000000;
+            width: 200px;
+            height: 50px;
+            line-height: 50px;
+            font-size: 22px;
+          text-align: center;
+           /* border: 1px solid #000;*/
+            margin: 0 auto;
+        }
+        .list_kassa {
+            position: relative;
+            /*line-height: 30px;*/
+        }
+        .list_kassa li {
+            list-style: none;
+          /*  font-size: 18px;*/
+             display: block;
+            height: 50px;
+            border:1px solid blue;
+            line-height: 25px;
+
+        }
+        .check {
+            display: inline-block;
+            position: relative;
+            width:50px;
+            height:50px;
+            border-radius: 3px;
+            border:2px solid gold;
+
+           /* float: left;*/
+        }
+        .kassa_input {
+          /* display: block;*/
+        }
+        .kassa_label{
+           /* display: block;*/
+        }
+
+    </style>
+
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <h2 class="text-center">Подберите оборудование для себя:</h2>
+        <ul class="list_kassa">
+            <li>
+              <span class="check"></span>
+           <input id="value_1" class="kassa_input" type="checkbox" value="1"><label for="value_1" class="kassa_label">Значение 1</label>
+             </li>
+            <li>
+                <span class="check"></span>
+           <input id="value_2" class="kassa_input" type="checkbox" value="2"><label for="value_2" class="kassa_label">Значение 2</label>
+             </li>
+             <li>
+                 <span class="check"></span>
+           <input id="value_3" class="kassa_input" type="checkbox" value="3"><label for="value_3" class="kassa_label">Значение 3</label>
+            </li>
+            <li>
+                <span class="check"></span>
+           <input id="value_4" class="kassa_input" type="checkbox" value="4"><label for="value_4" class="kassa_label">Значение 4</label>
+             </li>
+             <li>
+                 <span class="check"></span>
+           <input id="value_5" class="kassa_input" type="checkbox" value="5"><label for="value_5" class="kassa_label">Значение 5</label>
+            </li>
+            <li>
+                <span class="check"></span>
+           <input id="value_6" class="kassa_input" type="checkbox" value="6"><label for="value_6" class="kassa_label">Значение 6</label>
+             </li>
+             <li>
+                 <span class="check"></span>
+           <input id="value_7" class="kassa_input" type="checkbox" value="9"><label for="value_7" class="kassa_label">Значение 7</label>
+            </li>
+
+          </ul>
+            <div class="result text-center"></div>
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+        <h2 class="text-center">Подберите оборудование для себя:</h2>
+
+               <div class="row">
+                <span class="check"></span>
+                <input id="value_1" class="kassa_input" type="checkbox" value="1"><label for="value_1" class="kassa_label">Значение 1</label>
+               </div>
+
+                <div class="row">
+                <span class="check"></span>
+                <input id="value_2" class="kassa_input" type="checkbox" value="2"><label for="value_2" class="kassa_label">Значение 2</label>
+                </div>
+
+                <div class="row">
+                <span class="check"></span>
+                <input id="value_3" class="kassa_input" type="checkbox" value="3"><label for="value_3" class="kassa_label">Значение 3</label>
+                </div>
+
+                <div class="row">
+                <span class="check"></span>
+                <input id="value_4" class="kassa_input" type="checkbox" value="4"><label for="value_4" class="kassa_label">Значение 4</label>
+                </div>
+
+              <div class="row">
+              <span class="check"></span>
+              <input id="value_5" class="kassa_input" type="checkbox" value="5"><label for="value_5" class="kassa_label">Значение 5</label>
+              </div>
+
+                <div
+                <span class="check"></span>
+                <input id="value_6" class="kassa_input" type="checkbox" value="6"><label for="value_6" class="kassa_label">Значение 6</label>
+
+                <span class="check"></span>
+                <input id="value_7" class="kassa_input" type="checkbox" value="9"><label for="value_7" class="kassa_label">Значение 7</label>
+
+        <div class="result text-center"></div>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!--script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script-->
+<script src="assets/jquery/jquery-3.1.1.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="assets/js/bootstrap.min.js"></script>
+    <script>
+        var page ={}
+        page.result=document.getElementsByClassName('result')[0];
+        page.kassa_result =0;
+        page.result.innerText = page.kassa_result;
+
+        document.querySelector('body').addEventListener('click', function(event) {
+           var target = event.target;
+            do {
+                var i=false;
+                var classList = target.classList.toString();
+                classList=classList.split(' ');
+                for(var i in classList){
+                    if(classList[i] == 'kassa_input') {i=true;break;}
+                }
+                if(i==true) break;
+               target=target.parentNode.nextSibling.innerText;
+
+
+            }while(target.tagName == 'BODY');
+           /* event.returnValue = false;*/
+           if(target.checked) {
+               page.kassa_result+=parseInt(target.value);
+           }
+           else {
+              page.kassa_result-=parseInt(target.value);
+
+           }
+            page.result.innerText=page.kassa_result;
+        });
+
+    </script>
+</body>
+</html>
